@@ -1,0 +1,41 @@
+#pragma once
+#include "CebElement.h"
+class CCebNode : public CCebElement 
+	// 연결된 스택을 위한 노드 클래스
+	// 클래스 CCebElement 클래스를 상속받는다(이 클래스에는 연결된 스택에 필요한 데이터 값이 들어있다)
+{
+	CCebNode* m_link; // 현재 노드의 링크값(다음 노드의 주소) 값을 저장하는 변수 선언
+	// 여기서 자료형이 CCebNode* 인 이유는 노드의 주소를 가리켜야하기 때문이다
+	
+public:
+	CCebNode(char ch = 0): CCebElement(ch) { m_link = NULL; } // 생성자
+	// 노드의 자식함수인 CCebElement에 ch값을 읽어들여 m_char에 저장하고, 다음 노드를 가리키는 포인터 변수 m_link을 NULL로 초기화
+	~CCebNode(void) { } // 소멸자
+	CCebNode* Next() { return m_link; } // 현재 노드의 링크값(다음 노드의 주소) 변수를 반환하는 함수
+
+	void SetLink( CCebNode *p ) { m_link = p; }
+	// p의 값을 받아 m_link의 값에 p의 값을 저장하는 함수
+	
+	void AddNext( CCebNode *p ) { 
+		// 연결된 스택에 다음 값을 추가하는 함수
+		// 만약 읽어 들인 p가 NULL이 아니라면 p를 다음 값이라고 생각하고 추가한다
+		// 다음 값을 추가한 다음 그 다음 값이 현재 값 m_link가 되게 한다
+		if( p != NULL ) {
+			p->m_link = m_link;
+			m_link = p;
+		}
+	}
+
+	CCebNode* RemoveNext( ) {
+		// 연결된 스택에 다음 값을 제거하는 함수
+		// 임의의 연결된 스택의 링크 값을 선언해 현재 노드의 링크값(다음 노드의 주소가 들어있는)을 대입해주고
+		// 링크 값의 링크(다음 노드의 링크(다음 노드의 다음 노드의 주소가 들어있는))값을 현재 링크라고 지정
+		CCebNode* p = m_link;
+		if( p != NULL ) 
+			m_link = p->m_link;
+		return p;
+		// p의 값 반환, 나중에 delete 할 것이므로 다음 값에서 링크 값을 저장하는 주소를 반환
+	}
+};
+
+

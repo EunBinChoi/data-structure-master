@@ -1,0 +1,57 @@
+// 파일 입출력 함수
+void CMaze::Load( char *fname ){	// 파일에서 리스트 정보를 읽어옴
+	FILE *fp = stdin;
+	if( fname != NULL ) {
+		fp = fopen (fname, "r");
+		if( fp == NULL ) {
+			printf( " Error: %s 파일이 없습니다.\n");
+			return;
+		}
+	}
+
+	int w, h;
+	printf( " 이미지 크기 입력 (w h): ");
+	fscanf( fp, "%d%d", &w, &h );
+	printf( " 이미지의 크기는 %d x %d 입니다.\n", w, h);
+
+	Init( w, h );		// 메모리 할당
+
+	for( int i=0 ; i<h ; i++ ) {
+		for( int j=0 ; j<w ; j++ ) {
+			fscanf( fp, "%d", &(m_maze[i][j]) );
+		}
+	}
+	if( fp != stdin ) fclose(fp);
+}
+void CMaze::Print( char *fname ) {	// 현재 리스트를 파일에 저장
+	FILE *fp = stdout;
+	if( fname != NULL ) {
+		fp = fopen (fname, "w");
+		if( fp == NULL ) {
+			printf( " Error: %s 파일을 만들 수 없습니다.\n");
+			return;
+		}
+	}
+
+	system("cls");
+	printf( "=============================================\n");
+	printf( "  전체 미로의 크기 = ");
+	fprintf( fp, "%d %d\n", m_w, m_h);
+	printf( "=============================================\n");
+
+	for( int i=0 ; i<m_h ; i++ ) {
+		for( int j=0 ; j<m_w ; j++ ) {
+			switch (m_maze[i][j]) {
+			case T_WALL		: fprintf( fp, "■" ); break;
+			case T_START	: fprintf( fp, "○" ); break;
+			case T_EXIT		: fprintf( fp, "◎" ); break;
+			case T_EMPTY	: fprintf( fp, "  " ); break;
+			case T_DONE		: fprintf( fp, "□" ); break;
+			case T_OPTIMAL	: fprintf( fp, "☆" ); break;
+			}
+		}
+		fprintf( fp, "\n");
+	}
+	printf( "=============================================\n");
+	if( fp != stdout ) fclose(fp);
+}

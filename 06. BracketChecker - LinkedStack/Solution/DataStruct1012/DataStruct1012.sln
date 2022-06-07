@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1012_Maze", "Project1012_Maze\Project1012_Maze.vcxproj", "{59A839C7-8C63-4BD9-810E-C0249C22F143}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1012_Element", "Project1012_Element\Project1012_Element.vcxproj", "{84D2A111-59DF-4BC3-AB5D-B8EFAF2EC79D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59A839C7-8C63-4BD9-810E-C0249C22F143}.Debug|Win32.ActiveCfg = Debug|Win32
+		{59A839C7-8C63-4BD9-810E-C0249C22F143}.Debug|Win32.Build.0 = Debug|Win32
+		{59A839C7-8C63-4BD9-810E-C0249C22F143}.Release|Win32.ActiveCfg = Release|Win32
+		{59A839C7-8C63-4BD9-810E-C0249C22F143}.Release|Win32.Build.0 = Release|Win32
+		{84D2A111-59DF-4BC3-AB5D-B8EFAF2EC79D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{84D2A111-59DF-4BC3-AB5D-B8EFAF2EC79D}.Debug|Win32.Build.0 = Debug|Win32
+		{84D2A111-59DF-4BC3-AB5D-B8EFAF2EC79D}.Release|Win32.ActiveCfg = Release|Win32
+		{84D2A111-59DF-4BC3-AB5D-B8EFAF2EC79D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
